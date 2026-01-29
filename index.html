@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CCPP-Bench</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        h2.title.is-3 {
+            background-color: #e8f5e9; /* 浅绿色背景 */
+            padding: 15px;  /* 内边距 */
+            border-radius: 5px; /* 圆角 */
+            margin: 15px 0; /* 上下外边距 */
+            transition: background-color 0.3s ease; /* 平滑过渡效果 */
+        }
+    </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/f8ddf9854a.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="description" content="Can MLLMs Understand the Deep Implication Behind Chinese Images?">
+  <meta name="keywords" content="CCPP-Bench, LMM, LMM Evaluation, MLLM, MLLM Evaluation, Multimodal large language model, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can MLLMs Understand the Deep Implication Behind Chinese Images?</title>
+
+  <link rel="icon" href="./images/icon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer=""></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer="" src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+<!--  <script src="./data/results/data_setting.js" defer></script>-->
+<!--  <script src="./data/results/model_scores.js" defer></script>-->
+<!--  <script src="./visualizer/data/data_public.js" defer></script>-->
+</head>
+<body class="CCPP-Bench-container">
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <span class="CCPP-Bench" style="vertical-align: middle">ST2I-E</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            Automatic and Reliable Faithfulness Evaluation for Scientific Text-to-Image
+Generation with LMMs
+          </h2>
+          <p style="color: red; font-size: 1.5em; font-weight: bold;">ACL 2026</p>
+            <div class="publication-links">
+              <!-- PDF Link. -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose ST2I-E, an automatic evaluation framework for scientific text-to-image generation. Our framework quantitatively measures relevance and accuracy while additionally producing interpretable natural-language rationales that explicitly identify scientific errors in generated images. Extensive experiments across multiple scientific domains demonstrate that ST2I-E aligns with human judgments significantly better than existing evaluation methods.
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Related Work</h2>
+        <div class="content has-text-justified">
+          <p>
+            The paper reviews three lines of related work: generic image-text evaluation metrics (e.g., CLIPScore), large-model-based evaluators (e.g., GPT-4 variants), and datasets for scientific image generation and evaluation. The authors highlight that existing approaches often lack scientific specificity, are computationally expensive, or generalize poorly to scientific domains.
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method: ST2I-E</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            <strong>ST2I-E</strong> is a unified evaluation framework for <em>Scientific Text-to-Image (Sci-T2I)</em> generation. 
+            It evaluates faithfulness from three complementary perspectives: <strong>semantic relevance</strong>, 
+            <strong>scientific accuracy</strong>, and <strong>explainability</strong>, without relying on human reference images.
+          </p>
+
+          <p>
+            <strong>Science-aware Representation Learning (SCLIP).</strong>
+            At the core of ST2I-E, we introduce <strong>SCLIP</strong>, a scientific vision-language model adapted from CLIP. 
+            SCLIP is trained with science-specific contrastive objectives to better capture fine-grained scientific semantics 
+            that are often overlooked by general-purpose vision-language models.
+          </p>
+
+          <p>
+            <strong>Training Objectives.</strong>
+            To align images and texts under scientific constraints, SCLIP is optimized using two complementary loss functions:
+            <strong>Language-Conditioned Matching Loss (LCM)</strong>, which strengthens text–image correspondence under scientific contexts,
+            and <strong>Language–Image Margin Loss (LIM)</strong>, which enlarges the margin between faithful and unfaithful generations.
+            Together, these losses improve both robustness and discriminability in scientific evaluation.
+          </p>
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+          <figure class="image is-inline-block">
+      <img src="images/image5.png" alt="The distribution of keywords" style="max-width: 90%;">
+    </figure></div>
+      </div>
+          <p>
+            <strong>Relevance Evaluation (ST2I-EREL).</strong>
+            We evaluate whether a generated image captures the intended scientific concept using <strong>SCLIP-R</strong>.
+            The relevance score is computed based on cosine similarity between the prompt and the generated image in the learned
+            scientific embedding space, focusing on global semantic alignment.
+          </p>
+
+          <p>
+            <strong>Accuracy Evaluation (ST2I-EACC).</strong>
+            To assess fine-grained scientific correctness, we introduce <strong>ST2I-EACC</strong>, which targets detailed attributes
+            such as object properties, quantities, spatial relationships, and structural constraints.
+            Instead of human-annotated references, we generate accuracy-aware negative samples by minimally editing captions
+            and corresponding images, and measure accuracy via SCLIP-based comparisons.
+          </p>
+
+          <p>
+            <strong>Explainable Evaluation (ST2I-EEXP).</strong>
+            Beyond numerical scores, <strong>ST2I-EEXP</strong> provides natural language rationales that explicitly identify
+            unfaithful elements in generated images. A lightweight large multimodal model is fine-tuned to describe
+            missing objects, incorrect attributes, or violated spatial relations, improving transparency and interpretability.
+          </p>
+
+          <p>
+            <strong>Overall Framework.</strong>
+            By integrating <strong>ST2I-EREL</strong>, <strong>ST2I-EACC</strong>, and <strong>ST2I-EEXP</strong> into a single framework,
+            ST2I-E enables fine-grained, interpretable, and reference-free evaluation for scientific text-to-image generation
+            across diverse scientific domains.
+          </p>
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+          <figure class="image is-inline-block">
+      <img src="images/image4.png" alt="The distribution of keywords" style="max-width: 90%;">
+    </figure></div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-------------------------------------------------------------------- prompt skills -------------------------------------------------------------------->
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experimental Setup</h2>
+        <div class="content has-text-justified">
+          <p>
+            We conduct comprehensive evaluations of ST2I-E on the ST2I-E 1.0 dataset and compare it against 19 existing evaluation methods. These baselines fall into three categories: traditional image–text similarity metrics, vision–language-model-based evaluators, and large-language-model-based evaluation approaches.
+We adopt SRCC (Spearman Rank Correlation Coefficient) and PLCC (Pearson Linear Correlation Coefficient) to measure alignment between automatic evaluation results and human judgments. In addition, human subjective evaluations are incorporated to further assess the reliability of different evaluators.
+All experiments are conducted under consistent hardware and inference settings to ensure fair comparison. This experimental design allows us to systematically analyze evaluation methods in terms of scientific fidelity, cross-domain generalization, and robustness.
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" id="examples">Examples</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="images\image1.png" alt="grade-lv" width="95%">
+            </div>
+          </div>s
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="images\image2.png" alt="grade-lv" width="95%">
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="images\image3.png" alt="grade-lv" width="95%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results and Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our results show that ST2I-E significantly outperforms all competing methods in 7 out of 8 scientific domains, achieving the highest or near-highest alignment with human judgments on both relevance and accuracy. This demonstrates strong cross-domain generalization.
+Further analysis indicates that closed-source models generally outperform open-source ones; however, model scale alone does not determine evaluation quality. Ablation studies confirm that scientific domain adaptation and contrastive learning objectives play a crucial role in performance improvements.
+Compared to score-only evaluators, ST2I-E exhibits greater robustness in complex scientific scenarios, particularly for samples involving spatial structures, quantitative relationships, and multiple attribute constraints.
+    
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+          <figure class="image is-inline-block">
+      <img src="images/image6.png" alt="The distribution of keywords" style="max-width: 90%;">
+    </figure></div>
+      </div>
+
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+          <figure class="image is-inline-block">
+      <img src="images/image7.png" alt="The distribution of keywords" style="max-width: 90%;">
+    </figure></div>
+      </div>
+</div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion & Contributions</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present ST2I-E, an automatic and interpretable evaluation framework for scientific text-to-image generation. By incorporating scientifically adapted vision–language models and rationale generation, our framework not only provides accurate evaluation scores but also explains the causes of model failures.
+</p><p>
+Experimental results demonstrate that ST2I-E achieves strong alignment with human judgments across multiple scientific domains and consistently outperforms existing evaluation approaches. We believe ST2I-E establishes a new paradigm for evaluating scientific multimodal models and paves the way for more reliable and interpretable scientific image generation research.
+
+        </p></div>
+    </div>
+    </div>
